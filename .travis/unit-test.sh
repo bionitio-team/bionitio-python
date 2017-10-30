@@ -4,14 +4,14 @@ set -e
 errors=0
 
 # Run unit tests
-python python/bionitio/bionitio_test.py || {
+python bionitio/bionitio_test.py || {
     echo "'python python/bionitio/bionitio_test.py' failed"
     let errors+=1
 }
 
 # Check program style
-pylint -E python/bionitio || {
-    echo "'pylint -E python/bionitio' failed"
+pylint -E bionitio || {
+    echo "'pylint -E bionitio' failed"
     let errors+=1
 }
 

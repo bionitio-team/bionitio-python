@@ -1,0 +1,4 @@
+[submodule "functional_tests"]
+	path = functional_tests
+	url = https://github.com/bionitio-team/bionitio-test
+	branch = master
