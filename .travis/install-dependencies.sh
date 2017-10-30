@@ -4,7 +4,7 @@
 
 echo 'Python install'
 (
-   pip install --user pylint
-   pip install --user ./python
+   pip install pylint
+   pip install ./python
   
 )
