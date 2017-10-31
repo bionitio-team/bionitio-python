@@ -5,6 +5,6 @@
 echo 'Python install'
 (
    pip install pylint
-   pip install ./python
+   pip install .
   
 )
