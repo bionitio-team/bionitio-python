@@ -5,7 +5,7 @@ Usage: python -m unittest -v bionitio_test
 '''
 
 import unittest
-from StringIO import StringIO
+from io import StringIO
 from Bio import SeqIO
 from bionitio import FastaStats
 
