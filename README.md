@@ -1,6 +1,6 @@
 # Overview 
 
-This is a Python implementation of bionitio.
+This is a Python 3 implementation of bionitio.
 
 The program reads one or more input FASTA files. For each file it computes a variety of statistics, and then prints a summary of the statistics as output.
 
@@ -16,7 +16,7 @@ Bionitio can be installed using `pip` in a variety of ways (`%` indicates the co
 
 1. Inside a virtual environment: 
 ```
-% virtualenv bionitio_dev
+% python3 -m venv bionitio_dev 
 % source bionitio_dev/bin/activate
 % pip install -U /path/to/bionitio-py
 ```
