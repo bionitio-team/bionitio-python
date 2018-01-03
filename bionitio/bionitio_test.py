@@ -6,7 +6,7 @@ Usage: python -m unittest -v bionitio_test
 
 import unittest
 from io import StringIO
-from Bio import SeqIO
+#pylint: disable=no-name-in-module
 from bionitio import FastaStats
 
 class TestFastaStats(unittest.TestCase):

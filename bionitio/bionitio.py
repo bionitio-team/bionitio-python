@@ -1,8 +1,8 @@
 '''
-Module      : Main 
+Module      : Main
 Description : The main entry point for the program.
-Copyright   : (c) Bernie Pope, 2016 
-License     : MIT 
+Copyright   : (c) Bernie Pope, 2016
+License     : MIT
 Maintainer  : bjpope@unimelb.edu.au
 Portability : POSIX
 
@@ -13,9 +13,9 @@ variety of statistics, and then prints a summary of the statistics as output.
 from argparse import ArgumentParser
 from math import floor
 import sys
-from Bio import SeqIO
 import logging
 import pkg_resources
+from Bio import SeqIO
 
 
 EXIT_FILE_IO_ERROR = 1
@@ -52,7 +52,8 @@ def parse_args():
     Returns Options object with command line argument values as attributes.
     Will exit the program on a command line error.
     '''
-    parser = ArgumentParser(description='Read one or more FASTA files, compute simple stats for each file')
+    description = 'Read one or more FASTA files, compute simple stats for each file'
+    parser = ArgumentParser(description=description)
     parser.add_argument(
         '--minlen',
         metavar='N',
@@ -61,17 +62,17 @@ def parse_args():
         help='Minimum length sequence to include in stats (default {})'.format(
             DEFAULT_MIN_LEN))
     parser.add_argument('--version',
-        action='version',
-        version='%(prog)s ' + PROGRAM_VERSION)
+                        action='version',
+                        version='%(prog)s ' + PROGRAM_VERSION)
     parser.add_argument('--log',
-        metavar='LOG_FILE',
-        type=str,
-        help='record program progress in LOG_FILE')
+                        metavar='LOG_FILE',
+                        type=str,
+                        help='record program progress in LOG_FILE')
     parser.add_argument('fasta_files',
-        nargs='*',
-        metavar='FASTA_FILE',
-        type=str,
-        help='Input FASTA files')
+                        nargs='*',
+                        metavar='FASTA_FILE',
+                        type=str,
+                        help='Input FASTA files')
     return parser.parse_args()
 
 
@@ -104,8 +105,7 @@ class FastaStats(object):
         "Two FastaStats objects are equal iff their attributes are equal"
         if type(other) is type(self):
             return self.__dict__ == other.__dict__
-        else:
-            return False
+        return False
 
     def __repr__(self):
         "Generate a printable representation of a FastaStats object"
@@ -186,7 +186,7 @@ def process_files(options):
     '''
     if options.fasta_files:
         for fasta_filename in options.fasta_files:
-            logging.info("Processing FASTA file from {}".format(fasta_filename))
+            logging.info("Processing FASTA file from %s", fasta_filename)
             try:
                 fasta_file = open(fasta_filename)
             except IOError as exception:
@@ -215,12 +215,12 @@ def init_logging(log_filename):
     '''
     if log_filename is not None:
         logging.basicConfig(filename=log_filename,
-            level=logging.DEBUG,
-            filemode='w',
-            format='%(asctime)s %(levelname)s - %(message)s',
-            datefmt='%m-%d-%Y %H:%M:%S')
+                            level=logging.DEBUG,
+                            filemode='w',
+                            format='%(asctime)s %(levelname)s - %(message)s',
+                            datefmt='%m-%d-%Y %H:%M:%S')
         logging.info('program started')
-        logging.info('command line: {0}'.format(' '.join(sys.argv)))
+        logging.info('command line: %s', ' '.join(sys.argv))
 
 
 def main():

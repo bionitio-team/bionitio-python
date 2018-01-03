@@ -10,8 +10,8 @@ python bionitio/bionitio_test.py || {
 }
 
 # Check program style
-pylint -E bionitio || {
-    echo "'pylint -E bionitio' failed"
+pylint -E bionitio.py bionitio_test.py || {
+    echo "'pylint -E bionitio.py bionitio_test.py ' failed"
     let errors+=1
 }
 
