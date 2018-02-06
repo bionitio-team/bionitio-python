@@ -2,7 +2,7 @@
 
 # Overview 
 
-This is a Python implementation of [bionitio](https://github.com/bionitio-team/bionitio).
+This is a Python 3 implementation of [bionitio](https://github.com/bionitio-team/bionitio).
 
 The program reads one or more input FASTA files. For each file it computes a variety of statistics, and then prints a summary of the statistics as output.
 
@@ -18,7 +18,7 @@ Bionitio can be installed using `pip` in a variety of ways (`%` indicates the co
 
 1. Inside a virtual environment: 
 ```
-% virtualenv bionitio_dev
+% python3 -m venv bionitio_dev 
 % source bionitio_dev/bin/activate
 % pip install -U /path/to/bionitio-py
 ```
@@ -117,7 +117,7 @@ stdin	5264	3801855	31	722	53540
 
 Bionitio provides an optional command line argument `--minlen` which causes it to ignore (not count) any sequences in the input FASTA files with length strictly less than the supplied value. 
 
-The example below illustrates bionitio applied to a single FASTA file called `file`.fa` with a `--minlen` filter of `1000`.
+The example below illustrates bionitio applied to a single FASTA file called `file.fa` with a `--minlen` filter of `1000`.
 ```
 % bionitio-py --minlen 1000 file.fa
 FILENAME	NUMSEQ	TOTAL	MIN	AVG	MAX
@@ -143,7 +143,7 @@ If the ``--log FILE`` command line argument is specified, bionitio will output a
 
 It is possible that the input FASTA file contains zero sequences, or, when the `--minlen` command line argument is used, it is possible that the file contains no sequences of length greater-than-or-equal-to the supplied value. In both of those cases bionitio will not be able to compute minimum, maximum or average sequence lengths, and instead it shows output in the following way:
 
-The example below illustrates bionitio applied to a single FASTA file called `empty`.fa` which contains zero sequences:
+The example below illustrates bionitio applied to a single FASTA file called `empty.fa` which contains zero sequences:
 ```
 % bionitio-py empty.fa
 FILENAME	NUMSEQ	TOTAL	MIN	AVG	MAX

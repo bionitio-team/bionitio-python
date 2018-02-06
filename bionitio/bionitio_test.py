@@ -5,8 +5,8 @@ Usage: python -m unittest -v bionitio_test
 '''
 
 import unittest
-from StringIO import StringIO
-from Bio import SeqIO
+from io import StringIO
+#pylint: disable=no-name-in-module
 from bionitio import FastaStats
 
 class TestFastaStats(unittest.TestCase):
