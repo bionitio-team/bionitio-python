@@ -9,5 +9,5 @@ before_install:
   - ./.travis/install-dependencies.sh  
 
 script:
-  - ./functional_tests/bionitio-test.sh bionitio-py functional_tests/test_data
+  - ./functional_tests/bionitio-test.sh -p bionitio-py -d functional_tests/test_data
   - ./.travis/unit-test.sh
