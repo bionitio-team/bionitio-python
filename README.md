@@ -2,7 +2,7 @@
 
 # Overview 
 
-This is a Python 3 implementation of [bionitio](https://github.com/bionitio-team/bionitio).
+This is a python implementation of [bionitio](https://github.com/bionitio-team/bionitio).
 
 The program reads one or more input FASTA files. For each file it computes a variety of statistics, and then prints a summary of the statistics as output.
 
@@ -16,9 +16,9 @@ This program is released as open source software under the terms of [MIT License
 
 Bionitio can be installed using `pip` in a variety of ways (`%` indicates the command line prompt):
 
-1. Inside a virtual environment: 
+1. Inside a virtual environment:
 ```
-% python3 -m venv bionitio_dev 
+% python3 -m venv bionitio_dev
 % source bionitio_dev/bin/activate
 % pip install -U /path/to/bionitio-py
 ```
@@ -30,6 +30,7 @@ Bionitio can be installed using `pip` in a variety of ways (`%` indicates the co
 ```
 % pip install -U --user /path/to/bionitio-py
 ```
+
 
 # General behaviour
 
@@ -56,6 +57,7 @@ In the examples below, `%` indicates the command line prompt.
 ## Help message
 
 Bionitio can display usage information on the command line via the `-h` or `--help` argument:
+
 ```
 % bionitio-py -h
 usage: bionitio-py [-h] [--minlen N] [--version] [--log LOG_FILE]
@@ -81,14 +83,14 @@ There are no restrictions on the name of the FASTA files. Often FASTA filenames 
 
 The example below illustrates bionitio applied to a single named FASTA file called `file1.fa`:
 ```
-% bionitio-py file1.fa
+% bionitio file1.fa
 FILENAME	NUMSEQ	TOTAL	MIN	AVG	MAX
 file1.fa	5264	3801855	31	722	53540
 ```
 
 The example below illustrates bionitio applied to three named FASTA files called `file1.fa`, `file2.fa` and `file3.fa`:
 ```
-% bionitio-py file1.fa file2.fa file3.fa
+% bionitio file1.fa file2.fa file3.fa
 FILENAME	NUMSEQ	TOTAL	MIN	AVG	MAX
 file1.fa	5264	3801855	31	722	53540
 file2.fa	5264	3801855	31	722	53540
@@ -100,7 +102,7 @@ file3.fa	5264	3801855	31	722	53540
 The example below illustrates bionitio reading a FASTA file from standard input. In this example we have redirected the contents of a file called `file1.fa` into the standard input using the shell redirection operator `<`:
 
 ```
-% bionitio-py < file1.fa
+% bionitio < file1.fa
 FILENAME	NUMSEQ	TOTAL	MIN	AVG	MAX
 stdin	5264	3801855	31	722	53540
 ```
@@ -108,7 +110,7 @@ stdin	5264	3801855	31	722	53540
 Equivalently, you could achieve the same result by piping a FASTA file into bionitio:
 
 ```
-% cat file1.fa | bionitio-py
+% cat file1.fa | bionitio
 FILENAME	NUMSEQ	TOTAL	MIN	AVG	MAX
 stdin	5264	3801855	31	722	53540
 ```
@@ -117,9 +119,9 @@ stdin	5264	3801855	31	722	53540
 
 Bionitio provides an optional command line argument `--minlen` which causes it to ignore (not count) any sequences in the input FASTA files with length strictly less than the supplied value. 
 
-The example below illustrates bionitio applied to a single FASTA file called `file.fa` with a `--minlen` filter of `1000`.
+The example below illustrates bionitio applied to a single FASTA file called `file`.fa` with a `--minlen` filter of `1000`.
 ```
-% bionitio-py --minlen 1000 file.fa
+% bionitio --minlen 1000 file.fa
 FILENAME	NUMSEQ	TOTAL	MIN	AVG	MAX
 file1.fa	4711	2801855	1021	929	53540
 ```
@@ -129,15 +131,18 @@ file1.fa	4711	2801855	1021	929	53540
 If the ``--log FILE`` command line argument is specified, bionitio will output a log file containing information about program progress. The log file includes the command line used to execute the program, and a note indicating which files have been processes so far. Events in the log file are annotated with their date and time of occurrence. 
 
 ```
-% bionitio-py --log bt.log file1.fasta file2.fasta 
+% bionitio --log bt.log file1.fasta file2.fasta 
 # normal bionitio output appears here
 # contents of log file displayed below
+```
+```
 % cat bt.log
 12/04/2016 19:14:47 program started
-12/04/2016 19:14:47 command line: /usr/local/bin/bionitio-py --log bt.log file1.fasta file2.fasta 
+12/04/2016 19:14:47 command line: /usr/local/bin/bionitio-py --log bt.log file1.fasta file2.fasta
 12/04/2016 19:14:47 Processing FASTA file from file1.fasta
 12/04/2016 19:14:47 Processing FASTA file from file2.fasta
 ```
+
 
 ## Empty files
 
@@ -145,7 +150,7 @@ It is possible that the input FASTA file contains zero sequences, or, when the `
 
 The example below illustrates bionitio applied to a single FASTA file called `empty.fa` which contains zero sequences:
 ```
-% bionitio-py empty.fa
+% bionitio empty.fa
 FILENAME	NUMSEQ	TOTAL	MIN	AVG	MAX
 empty.fa	0	0	-	-	-
 ```
@@ -177,11 +182,14 @@ Bionitio returns the following exit status values:
 
 A set of sample test input files is provided in the `test_data` folder.
 ```
-% bionitio-py two_sequence.fasta 
-FILENAME	TOTAL	NUMSEQ	MIN	AVG	MAX
-two_sequence.fasta	2	357	120	178	237
+% bionitio-py two_sequence.fasta
+FILENAME        TOTAL   NUMSEQ  MIN     AVG     MAX
+two_sequence.fasta      2       357     120     178     237
 ```
+
 
 # Bugs
 
-File at our [Issue Tracker](https://github.com/bionitio-team/bionitio/issues)
+[General bionitio issues](https://github.com/bionitio-team/bionitio/issues)
+
+[bionitio-python specific issues]((https://github.com/bionitio-team/bionitio-python/issues) 
