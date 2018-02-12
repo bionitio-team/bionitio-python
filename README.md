@@ -192,4 +192,4 @@ two_sequence.fasta      2       357     120     178     237
 
 [General bionitio issues](https://github.com/bionitio-team/bionitio/issues)
 
-[bionitio-python specific issues]((https://github.com/bionitio-team/bionitio-python/issues) 
+[bionitio-python specific issues](https://github.com/bionitio-team/bionitio-python/issues) 
