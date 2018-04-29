@@ -163,11 +163,7 @@ Bionitio returns the following exit status values:
 
 # Error handling
 
-## Invalid input FASTA files
-
-## Incorrect command line arguments
-
-## Memory limits and other resource restrictions
+XXX FIXME
 
 # Testing
 
