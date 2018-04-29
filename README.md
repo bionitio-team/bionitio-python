@@ -10,6 +10,16 @@ This program is released as open source software under the terms of [MIT License
 
 # Installing
 
+Clone this repository: 
+```
+git clone https://github.com/bionitio-team/bionitio-python
+```
+
+Move into the repository directory:
+```
+cd bionitio-python
+```
+
 Bionitio can be installed using `pip` in a variety of ways (`%` indicates the command line prompt):
 
 1. Inside a virtual environment:
