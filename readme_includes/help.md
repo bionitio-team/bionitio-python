@@ -1,6 +1,6 @@
 ```
-% bionitio-py -h
-usage: bionitio-py [-h] [--minlen N] [--version] [--log LOG_FILE]
+% bionitio -h
+usage: bionitio [-h] [--minlen N] [--version] [--log LOG_FILE]
                   [FASTA_FILE [FASTA_FILE ...]]
 
 Print fasta stats

@@ -12,14 +12,14 @@ and is an ideal starting place for new projects.'''
 
 
 setup(
-    name='bionitio-py',
+    name='bionitio',
     version='0.1.0.0',
     author='Bernie Pope',
     author_email='bjpope@unimelb.edu.au',
     packages=['bionitio'],
     package_dir={'bionitio': 'bionitio'},
     entry_points={
-        'console_scripts': ['bionitio-py = bionitio.bionitio:main']
+        'console_scripts': ['bionitio = bionitio.bionitio:main']
     },
     url='https://github.com/bjpop/bionitio',
     license='LICENSE',
