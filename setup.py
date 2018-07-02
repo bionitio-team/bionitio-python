@@ -14,8 +14,8 @@ and is an ideal starting place for new projects.'''
 setup(
     name='bionitio',
     version='0.1.0.0',
-    author='Bernie Pope',
-    author_email='bjpope@unimelb.edu.au',
+    author='BIONITIO_AUTHOR',
+    author_email='BIONITIO_EMAIL',
     packages=['bionitio'],
     package_dir={'bionitio': 'bionitio'},
     entry_points={

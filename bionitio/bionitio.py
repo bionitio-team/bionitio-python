@@ -1,9 +1,9 @@
 '''
 Module      : Main
 Description : The main entry point for the program.
-Copyright   : (c) Bernie Pope, 2016
+Copyright   : (c) BIONITIO_AUTHOR, BIONITIO_DATE 
 License     : MIT
-Maintainer  : bjpope@unimelb.edu.au
+Maintainer  : BIONITIO_EMAIL 
 Portability : POSIX
 
 The program reads one or more input FASTA files. For each file it computes a
