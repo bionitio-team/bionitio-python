@@ -17,9 +17,9 @@ setup(
     author='BIONITIO_AUTHOR',
     author_email='BIONITIO_EMAIL',
     packages=['bionitio'],
-    package_dir={'bionitio': 'bionitio'},
+    package_dir={'bionitio': 'src'},
     entry_points={
-        'console_scripts': ['bionitio = bionitio.bionitio:main']
+        'console_scripts': ['bionitio = src.bionitio:main']
     },
     url='https://github.com/bjpop/bionitio',
     license='LICENSE',
