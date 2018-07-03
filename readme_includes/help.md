@@ -1,5 +1,5 @@
 ```
-% bionitio -h
+$ bionitio -h
 usage: bionitio [-h] [--minlen N] [--version] [--log LOG_FILE]
                   [FASTA_FILE [FASTA_FILE ...]]
 

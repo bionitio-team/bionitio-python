@@ -26,17 +26,17 @@ Bionitio can be installed using `pip` in a variety of ways (`%` indicates the co
 
 1. Inside a virtual environment:
 ```
-% python3 -m venv bionitio_dev
-% source bionitio_dev/bin/activate
-% pip install -U /path/to/bionitio-py
+$ python3 -m venv bionitio_dev
+$ source bionitio_dev/bin/activate
+$ pip install -U /path/to/bionitio
 ```
 2. Into the global package database for all users:
 ```
-% pip install -U /path/to/bionitio-py
+$ pip install -U /path/to/bionitio
 ```
 3. Into the user package database (for the current user only):
 ```
-% pip install -U --user /path/to/bionitio-py
+$ pip install -U --user /path/to/bionitio
 ```
 
 
@@ -63,8 +63,8 @@ If there are zero sequences counted in a file, the values of MIN, AVERAGE and MA
 Bionitio can display usage information on the command line via the `-h` or `--help` argument:
 
 ```
-% bionitio-py -h
-usage: bionitio-py [-h] [--minlen N] [--version] [--log LOG_FILE]
+$ bionitio -h
+usage: bionitio [-h] [--minlen N] [--version] [--log LOG_FILE]
                   [FASTA_FILE [FASTA_FILE ...]]
 
 Print fasta stats
@@ -140,9 +140,9 @@ $ bionitio --log bt.log file1.fasta file2.fasta
 # contents of log file displayed below
 ```
 ```
-% cat bt.log
+$ cat bt.log
 12/04/2016 19:14:47 program started
-12/04/2016 19:14:47 command line: /usr/local/bin/bionitio-py --log bt.log file1.fasta file2.fasta
+12/04/2016 19:14:47 command line: /usr/local/bin/bionitio --log bt.log file1.fasta file2.fasta
 12/04/2016 19:14:47 Processing FASTA file from file1.fasta
 12/04/2016 19:14:47 Processing FASTA file from file2.fasta
 ```
@@ -178,8 +178,8 @@ XXX FIXME
 ## Unit tests
 
 ```
-% cd bionitio/python/bionitio
-% python -m unittest -v bionitio_test
+$ cd bionitio/python/bionitio
+$ python -m unittest -v bionitio_test
 ```
 
 ## Test suite
