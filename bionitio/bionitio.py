@@ -2,7 +2,7 @@
 Module      : Main
 Description : The main entry point for the program.
 Copyright   : (c) BIONITIO_AUTHOR, BIONITIO_DATE 
-License     : MIT
+License     : BIONITIO_LICENSE 
 Maintainer  : BIONITIO_EMAIL 
 Portability : POSIX
 
