@@ -1,4 +1,4 @@
-Bionitio can be installed using `pip` in a variety of ways (`%` indicates the command line prompt):
+Bionitio can be installed using `pip` in a variety of ways (`$` indicates the command line prompt):
 
 1. Inside a virtual environment:
 ```
