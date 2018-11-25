@@ -169,10 +169,6 @@ Bionitio returns the following exit status values:
 * 3: Input FASTA file is invalid. This can occur if bionitio can read an input file but the file format is invalid. 
 
 
-# Error handling
-
-XXX FIXME
-
 # Testing
 
 ## Unit tests
