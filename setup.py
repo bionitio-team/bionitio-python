@@ -21,7 +21,7 @@ setup(
     entry_points={
         'console_scripts': ['bionitio = bionitio.bionitio:main']
     },
-    url='https://github.com/bjpop/bionitio',
+    url='https://github.com/BIONITIO_USERNAME/bionitio',
     license='LICENSE',
     description=('A prototypical bioinformatics command line tool'),
     long_description=(LONG_DESCRIPTION),
