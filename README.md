@@ -92,13 +92,13 @@ FILENAME	NUMSEQ	TOTAL	MIN	AVG	MAX
 file1.fa	5264	3801855	31	722	53540
 ```
 
-The example below illustrates bionitio applied to three named FASTA files called `file1.fa`, `file2.fa` and `file3.fa`:
+The example below illustrates bionitio applied to three FASTA files called `file1.fa`, `file2.fa` and `file3.fa`:
 ```
 $ bionitio file1.fa file2.fa file3.fa
 FILENAME	NUMSEQ	TOTAL	MIN	AVG	MAX
 file1.fa	5264	3801855	31	722	53540
-file2.fa	5264	3801855	31	722	53540
-file3.fa	5264	3801855	31	722	53540
+file2.fa	1245	982374	8	393	928402
+file3.fa	64	8376	102	123	212	
 ```
 
 ## Reading a single FASTA file from standard input 
