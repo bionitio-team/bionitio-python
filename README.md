@@ -123,7 +123,7 @@ stdin	5264	3801855	31	722	53540
 
 Bionitio provides an optional command line argument `--minlen` which causes it to ignore (not count) any sequences in the input FASTA files with length strictly less than the supplied value. 
 
-The example below illustrates bionitio applied to a single FASTA file called `file`.fa` with a `--minlen` filter of `1000`.
+The example below illustrates bionitio applied to a single FASTA file called `file`.fa` with a `--minlen` filter of 1000.
 ```
 $ bionitio --minlen 1000 file.fa
 FILENAME	NUMSEQ	TOTAL	MIN	AVG	MAX
@@ -136,8 +136,6 @@ If the ``--log FILE`` command line argument is specified, bionitio will output a
 
 ```
 $ bionitio --log bt.log file1.fasta file2.fasta 
-# normal bionitio output appears here
-# contents of log file displayed below
 ```
 ```
 $ cat bt.log
