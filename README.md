@@ -22,6 +22,8 @@ Move into the repository directory:
 $ cd bionitio-python
 ```
 
+Python 3 is required for this software.
+
 Bionitio can be installed using `pip` in a variety of ways (`$` indicates the command line prompt):
 
 1. Inside a virtual environment:
