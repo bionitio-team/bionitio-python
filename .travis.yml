@@ -1,13 +1,17 @@
 sudo: true
 dist: trusty
+services:
+  - docker
 
 language: python
 python:
   - "3.4"
 
 before_install:
-  - ./.travis/install-dependencies.sh  
+  - ./.travis/install-dependencies.sh
+  - docker build -t bionitio-python .
 
 script:
   - ./functional_tests/bionitio-test.sh -p bionitio -d functional_tests/test_data
+  - ./functional_tests/bionitio-test.sh -p "docker run -v functional_tests/test_data:/data" -d /data
   - ./.travis/unit-test.sh
