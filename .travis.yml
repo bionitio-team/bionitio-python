@@ -11,8 +11,14 @@ before_install:
   - docker build -t bionitio-python .
 
 script:
+  # Functional tests
   - ./functional_tests/bionitio-test.sh -p bionitio -d functional_tests/test_data
-  - docker run --entrypoint /bionitio/functional_tests/bionitio-test.sh bionitio-python -p bionitio -d /bionitio/functional_tests/test_data
+  # Unit tests
   - ./.travis/unit-test.sh
-  - docker run --entrypoint /bionitio/.travis/unit-test.sh bionitio-python
 
+  # Both of these same tests, in Docker
+  - docker run --entrypoint /bionitio/.travis/unit-test.sh bionitio-python
+  - docker run --entrypoint /bionitio/functional_tests/bionitio-test.sh bionitio-python -p bionitio -d /bionitio/functional_tests/test_data
+
+  # CWL definition test
+  - cwltool bionitio.cwl --fasta_file /bionitio/functional_tests/test_data/two_sequence.fasta

@@ -8,7 +8,7 @@ inputs:
   - doc: Input FASTA files
     id: fasta_file
     inputBinding: {position: 0}
-    type: string
+    type: File
   - doc: Minimum length sequence to include in stats (default 0)
     id: min_len
     inputBinding: {prefix: --minlen}
