@@ -21,4 +21,4 @@ script:
   - docker run --entrypoint /bionitio/functional_tests/bionitio-test.sh bionitio-python -p bionitio -d /bionitio/functional_tests/test_data
 
   # CWL definition test
-  - cwltool bionitio.cwl --fasta_file /bionitio/functional_tests/test_data/two_sequence.fasta
+  - cwltool bionitio.cwl --fasta_file functional_tests/test_data/two_sequence.fasta
