@@ -1,5 +1,6 @@
 sudo: true
-dist: trusty
+#dist: trusty
+dist: xenial 
 services:
   - docker
 language: python
