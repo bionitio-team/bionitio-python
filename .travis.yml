@@ -2,7 +2,7 @@ sudo: true
 dist: xenial 
 services:
   - docker
-language: mimimal 
+language: python 
 python:
   - "3.4"
 
