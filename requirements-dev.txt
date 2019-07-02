@@ -2,4 +2,3 @@
 biopython==1.66
 # Packages that are not dependencies but used for building or testing
 pylint
-cwltool
