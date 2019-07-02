@@ -7,7 +7,7 @@ python:
   - "3.4"
 
 before_install:
-  - pip install cwltool
+  - pip3 install cwltool
   - docker build -t bionitio-python .
 
 script:
