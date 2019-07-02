@@ -1,15 +1,12 @@
 sudo: true
-#dist: trusty
 dist: xenial 
 services:
   - docker
-language: python
+language: mimimal 
 python:
   - "3.4"
 
 before_install:
-  - sudo apt-get update
-  - sudo apt-get install -y cwltool
   - docker build -t bionitio-python .
 
 script:
