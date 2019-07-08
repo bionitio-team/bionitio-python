@@ -196,6 +196,7 @@ Display the help message:
 ```
 $ docker run -i bionitio bionitio -h
 ```
+Note: it may seem strange that `bionitio` is mentioned twice in the command. The first instance is the name of the Docker container and the second instance is the name of the bionitio executable that you want to run inside the container.
 
 Display the version number:
 ```
