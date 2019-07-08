@@ -173,7 +173,7 @@ FILENAME	NUMSEQ	TOTAL	MIN	AVG	MAX
 empty.fa	0	0	-	-	-
 ```
 
-# Exit status values
+## Exit status values
 
 Bionitio returns the following exit status values:
 
