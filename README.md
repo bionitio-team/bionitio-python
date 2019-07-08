@@ -255,6 +255,11 @@ by requesting "verbose" output with the `-d` flag:
 $ ./bionitio-test.sh -p bionitio -d test_data -v
 ```
 
+The test script can also be run inside the Docker container:
+```
+$ docker run bionitio /bionitio/functional_tests/bionitio-test.sh -p bionitio -d /bionitio/functional_tests/test_data -v
+```
+
 # Bug reporting and feature requests
 
 Please submit bug reports and feature requests to the issue tracker on GitHub:
