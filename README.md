@@ -181,7 +181,7 @@ Bionitio returns the following exit status values:
 * 1: File I/O error. This can occur if at least one of the input FASTA files cannot be opened for reading. This can occur because the file does not exist at the specified path, or bionitio does not have permission to read from the file. 
 * 2: A command line error occurred. This can happen if the user specifies an incorrect command line argument. In this circumstance bionitio will also print a usage message to the standard error device (stderr).
 
-## Running within the Docker container
+# Running within the Docker container
 
 The following section describes how to run bionitio within the Docker container. It assumes you have Docker installed on your computer and have built the container as described above. 
 The container behaves in the same way as the normal version of bionitio, however there are some Docker-specific details that you must be aware of.
