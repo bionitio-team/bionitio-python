@@ -261,6 +261,18 @@ The test script can also be run inside the Docker container:
 $ docker run bionitio /bionitio/functional_tests/bionitio-test.sh -p bionitio -d /bionitio/functional_tests/test_data -v
 ```
 
+# Common Workflow Language (CWL) wrapper
+
+The [Common Workflow Language (CWL)](https://www.commonwl.org/) specifies a portable mechanism for running software tools and workflows across many different platforms.
+We provide an example CWL wrapper for bionitio in the file `bionitio.cwl`. It invokes bionitio using the Docker container (described above). This wrapper allows you
+to easily incorporate bionitio into CWL workflows, and can be executed by any CWL-supporting workflow engine.
+
+You can test the wrapper using the `cwltool` workflow runner, which is provided by the CWL project (see the CWL documentation for how to install this on your computer).
+
+```
+$ cwltool bionitio.cwl --fasta_file file.fasta 
+```
+
 # Bug reporting and feature requests
 
 Please submit bug reports and feature requests to the issue tracker on GitHub:
