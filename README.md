@@ -46,7 +46,7 @@ $ pip install -U --user /path/to/bionitio
 ```
 
 
-## Docker container 
+## Building the Docker container 
 
 The file `Dockerfile` contains instructions for building a Docker container for bionitio.
 
@@ -54,19 +54,7 @@ If you have Docker installed on your computer you can build the container like s
 ```
 $ docker build -t bionitio .
 ```
-Having built the container you can run it like so, where ARGS is replaced by the normal bionitio command line arguments
-```
-$ docker run bionitio ARGS
-```
-For example, to display the help message:
-```
-$ docker run bionitio -h
-```
-Or to run on multiple input files:
-```
-$ docker run bionitio file1.fa file2.fa
-```
-See below for more detailed usage information.
+See below for information about running bionitio within the Docker container.
 
 # General behaviour
 
@@ -193,6 +181,44 @@ Bionitio returns the following exit status values:
 * 1: File I/O error. This can occur if at least one of the input FASTA files cannot be opened for reading. This can occur because the file does not exist at the specified path, or bionitio does not have permission to read from the file. 
 * 2: A command line error occurred. This can happen if the user specifies an incorrect command line argument. In this circumstance bionitio will also print a usage message to the standard error device (stderr).
 
+## Running within the Docker container
+
+The following section describes how to run bionitio within the Docker container. It assumes you have Docker installed on your computer and have built the container as described above. 
+The container behaves in the same way as the normal version of bionitio, however there are some Docker-specific details that you must be aware of.
+
+The general syntax for running bionitio within Docker is as follows:
+```
+$ docker run -i bionitio CMD
+```
+where CMD should be replaced by the specific command line invocation of bionitio. Specific examples are below.
+
+Display the help message:
+```
+$ docker run -i bionitio bionitio -h
+```
+
+Display the version number:
+```
+$ docker run -i bionitio bionitio --version
+```
+
+Read from a single input FASTA file redirected from standard input:
+```
+$ docker run -i bionitio bionitio < file.FASTA 
+```
+
+Read from multuple input FASTA files named on the command line, where all the files are in the same directory. You must replace `DATA` with the absolute file path of the directory containing the FASTA files:  
+```
+$ docker run -i -v DATA:/in bionitio bionitio /in/file1.fasta /in/file2.fasta /in/file3.fasta
+```
+The argument `DATA:/in` maps the directory called DATA on your local machine into the `/in` directory within the Docker container.
+
+Logging progress to a file in the directory OUT: 
+```
+$ docker run -i -v DATA:/in -v OUT:/out bionitio-c bionitio --log /out/logfile.txt /in/file1.fasta /in/file2.fasta /in/file3.fasta
+```
+Replace `OUT` with the absolute path of the directory to write the log file. For example, if you want the log file written to the current working directory, replace `OUT` with `$PWD`.
+As above, you will also need to replace `DATA` with the absolite path to the directory containing your input FASTA files.
 
 # Testing
 
