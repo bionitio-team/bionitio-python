@@ -12,6 +12,10 @@ This program is released as open source software under the terms of [MIT License
 
 # Installing
 
+You can install bionitio directly from the source code or build and run it from within Docker container.
+
+## Installing directly from source code
+
 Clone this repository: 
 ```
 $ git clone https://github.com/bionitio-team/bionitio-python
@@ -41,6 +45,28 @@ $ pip install -U /path/to/bionitio
 $ pip install -U --user /path/to/bionitio
 ```
 
+
+## Docker container 
+
+The file `Dockerfile` contains instructions for building a Docker container for bionitio.
+
+If you have Docker installed on your computer you can build the container like so:
+```
+$ docker build -t bionitio .
+```
+Having built the container you can run it like so, where ARGS is replaced by the normal bionitio command line arguments
+```
+$ docker run bionitio ARGS
+```
+For example, to display the help message:
+```
+$ docker run bionitio -h
+```
+Or to run on multiple input files:
+```
+$ docker run bionitio file1.fa file2.fa
+```
+See below for more detailed usage information.
 
 # General behaviour
 
