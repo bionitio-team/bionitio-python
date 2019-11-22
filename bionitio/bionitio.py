@@ -218,7 +218,7 @@ def init_logging(log_filename):
                             level=logging.DEBUG,
                             filemode='w',
                             format='%(asctime)s %(levelname)s - %(message)s',
-                            datefmt='%m-%d-%Y %H:%M:%S')
+                            datefmt="%Y-%m-%dT%H:%M:%S%z")
         logging.info('program started')
         logging.info('command line: %s', ' '.join(sys.argv))
 
