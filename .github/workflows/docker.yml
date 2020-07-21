@@ -17,5 +17,8 @@ jobs:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: docker.pkg.github.com
-        repository: BIONITIO_GITHUB_USERNAME/bionitio/bionitio
+        repository: ${{github.repository}}/bionitio
         tag_with_ref: true
+
+    - name: Functional Docker tests
+      run: docker run bionitio --entrypoint /bionitio/functional_tests/bionitio-test.sh -p bionitio -d /bionitio/functional_tests/test_data -v
