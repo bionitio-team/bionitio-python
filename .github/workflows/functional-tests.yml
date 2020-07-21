@@ -1,0 +1,27 @@
+name: Functional tests
+# This workflow is triggered on pushes and PRs to the repository.
+on: [push, pull_request]
+
+jobs:
+  FuncTests:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out source-code repository
+      uses: actions/checkout@v2
+      with:
+        submodules: true
+
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+
+    - name: Install python dependencies
+      run: |
+        pip install -r requirements-dev.txt
+        pip install .
+
+    - name: Run functional tests
+      run: functional_tests/bionitio-test.sh

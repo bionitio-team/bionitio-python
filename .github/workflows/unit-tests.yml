@@ -1,0 +1,31 @@
+name: Unit tests
+# This workflow is triggered on pushes and PRs to the repository.
+on: [push, pull_request]
+
+jobs:
+  PythonTests:
+
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.6, 3.7, 3.8]
+
+    steps:
+    - name: Check out source-code repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: Install python dependencies
+      run: |
+        pip install -r requirements-dev.txt
+        pip install .
+
+    - name: Run unit tests
+      run: python bionitio/bionitio_test.py
+
+    - name: Check program style
+      run: pylint -E bionitio/*.py

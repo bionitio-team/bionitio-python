@@ -1,0 +1,21 @@
+name: Docker Image
+# This workflow is triggered on pushes and package releases.
+on: [push, published]
+
+jobs:
+  BuildPushDocker:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out source-code repository
+      uses: actions/checkout@v2
+
+    - name: Push Docker image to GitHub Packages
+      uses: docker/build-push-action@v1
+      with:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: docker.pkg.github.com
+        repository: BIONITIO_GITHUB_USERNAME/bionitio/bionitio
+        tag_with_ref: true
