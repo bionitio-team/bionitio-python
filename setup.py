@@ -18,6 +18,7 @@ setup(
     author='BIONITIO_AUTHOR',
     author_email='BIONITIO_EMAIL',
     url='https://github.com/BIONITIO_GITHUB_USERNAME/bionitio',
+    download_url = 'https://github.com/BIONITIO_GITHUB_USERNAME/bionitio/tarball/{}'.format(version),
     license='MIT',
     package_dir={'bionitio': 'bionitio'},
     entry_points={
@@ -26,4 +27,17 @@ setup(
     install_requires=["biopython"],
     setup_requires=["twine>=1.11.0", "setuptools>=38.6."],
     packages=find_packages(exclude=("readme_includes", "functional_tests")),
+    classifiers = [
+        'Development Status :: 4 - Beta',
+        'Environment :: Console',
+        'Intended Audience :: Science/Research',
+        'License :: OSI Approved :: MIT License',
+        'Natural Language :: English',
+        'Operating System :: MacOS :: MacOS X',
+        'Operating System :: POSIX',
+        'Operating System :: Unix',
+        'Programming Language :: Python',
+        'Topic :: Scientific/Engineering',
+        'Topic :: Scientific/Engineering :: Bio-Informatics'
+    ]
 )
