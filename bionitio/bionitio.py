@@ -1,4 +1,4 @@
-'''
+"""
 Module      : Main
 Description : The main entry point for the program.
 Copyright   : (c) BIONITIO_AUTHOR, BIONITIO_DATE 
@@ -8,7 +8,7 @@ Portability : POSIX
 
 The program reads one or more input FASTA files. For each file it computes a
 variety of statistics, and then prints a summary of the statistics as output.
-'''
+"""
 
 from argparse import ArgumentParser
 from math import floor
@@ -23,7 +23,7 @@ EXIT_COMMAND_LINE_ERROR = 2
 EXIT_FASTA_FILE_ERROR = 3
 DEFAULT_MIN_LEN = 0
 DEFAULT_VERBOSE = False
-HEADER = 'FILENAME\tNUMSEQ\tTOTAL\tMIN\tAVG\tMAX'
+HEADER = "FILENAME\tNUMSEQ\tTOTAL\tMIN\tAVG\tMAX"
 PROGRAM_NAME = "bionitio"
 
 
@@ -34,50 +34,41 @@ except pkg_resources.DistributionNotFound:
 
 
 def exit_with_error(message, exit_status):
-    '''Print an error message to stderr, prefixed by the program name and 'ERROR'.
+    """Print an error message to stderr, prefixed by the program name and 'ERROR'.
     Then exit program with supplied exit status.
 
     Arguments:
         message: an error message as a string.
         exit_status: a positive integer representing the exit status of the
             program.
-    '''
+    """
     logging.error(message)
     print("{} ERROR: {}, exiting".format(PROGRAM_NAME, message), file=sys.stderr)
     sys.exit(exit_status)
 
 
 def parse_args():
-    '''Parse command line arguments.
+    """Parse command line arguments.
     Returns Options object with command line argument values as attributes.
     Will exit the program on a command line error.
-    '''
-    description = 'Read one or more FASTA files, compute simple stats for each file'
+    """
+    description = "Read one or more FASTA files, compute simple stats for each file"
     parser = ArgumentParser(description=description)
     parser.add_argument(
-        '--minlen',
-        metavar='N',
+        "--minlen",
+        metavar="N",
         type=int,
         default=DEFAULT_MIN_LEN,
-        help='Minimum length sequence to include in stats (default {})'.format(
-            DEFAULT_MIN_LEN))
-    parser.add_argument('--version',
-                        action='version',
-                        version='%(prog)s ' + PROGRAM_VERSION)
-    parser.add_argument('--log',
-                        metavar='LOG_FILE',
-                        type=str,
-                        help='record program progress in LOG_FILE')
-    parser.add_argument('fasta_files',
-                        nargs='*',
-                        metavar='FASTA_FILE',
-                        type=str,
-                        help='Input FASTA files')
+        help="Minimum length sequence to include in stats (default {})".format(DEFAULT_MIN_LEN),
+    )
+    parser.add_argument("--version", action="version", version="%(prog)s " + PROGRAM_VERSION)
+    parser.add_argument("--log", metavar="LOG_FILE", type=str, help="record program progress in LOG_FILE")
+    parser.add_argument("fasta_files", nargs="*", metavar="FASTA_FILE", type=str, help="Input FASTA files")
     return parser.parse_args()
 
 
 class FastaStats(object):
-    '''Compute various statistics for a FASTA file:
+    """Compute various statistics for a FASTA file:
 
     num_seqs: the number of sequences in the file satisfying the minimum
        length requirement (minlen_threshold).
@@ -86,14 +77,10 @@ class FastaStats(object):
     max_len: the maximum length of the counted sequences.
     average: the average length of the counted sequences rounded down
        to an integer.
-    '''
-    #pylint: disable=too-many-arguments
-    def __init__(self,
-                 num_seqs=None,
-                 num_bases=None,
-                 min_len=None,
-                 max_len=None,
-                 average=None):
+    """
+
+    # pylint: disable=too-many-arguments
+    def __init__(self, num_seqs=None, num_bases=None, min_len=None, max_len=None, average=None):
         "Build an empty FastaStats object"
         self.num_seqs = num_seqs
         self.num_bases = num_bases
@@ -109,13 +96,12 @@ class FastaStats(object):
 
     def __repr__(self):
         "Generate a printable representation of a FastaStats object"
-        return "FastaStats(num_seqs={}, num_bases={}, min_len={}, max_len={}, " \
-            "average={})".format(
-                self.num_seqs, self.num_bases, self.min_len, self.max_len,
-                self.average)
+        return "FastaStats(num_seqs={}, num_bases={}, min_len={}, max_len={}, " "average={})".format(
+            self.num_seqs, self.num_bases, self.min_len, self.max_len, self.average
+        )
 
     def from_file(self, fasta_file, minlen_threshold=DEFAULT_MIN_LEN):
-        '''Compute a FastaStats object from an input FASTA file.
+        """Compute a FastaStats object from an input FASTA file.
 
         Arguments:
            fasta_file: an open file object for the FASTA file
@@ -125,7 +111,7 @@ class FastaStats(object):
               considered in the resulting statistics.
         Result:
            A FastaStats object
-        '''
+        """
         num_seqs = num_bases = 0
         min_len = max_len = None
         for seq in SeqIO.parse(fasta_file, "fasta"):
@@ -149,7 +135,7 @@ class FastaStats(object):
         return self
 
     def pretty(self, filename):
-        '''Generate a pretty printable representation of a FastaStats object
+        """Generate a pretty printable representation of a FastaStats object
         suitable for output of the program. The output is a tab-delimited
         string containing the filename of the input FASTA file followed by
         the attributes of the object. If 0 sequences were read from the FASTA
@@ -160,7 +146,7 @@ class FastaStats(object):
            filename: the name of the input FASTA file
         Result:
            A string suitable for pretty printed output
-        '''
+        """
         if self.num_seqs > 0:
             num_seqs = str(self.num_seqs)
             num_bases = str(self.num_bases)
@@ -170,12 +156,11 @@ class FastaStats(object):
         else:
             num_seqs = num_bases = "0"
             min_len = average = max_len = "-"
-        return "\t".join([filename, num_seqs, num_bases, min_len, average,
-                          max_len])
+        return "\t".join([filename, num_seqs, num_bases, min_len, average, max_len])
 
 
 def process_files(options):
-    '''Compute and print FastaStats for each input FASTA file specified on the
+    """Compute and print FastaStats for each input FASTA file specified on the
     command line. If no FASTA files are specified on the command line then
     read from the standard input (stdin).
 
@@ -183,7 +168,7 @@ def process_files(options):
        options: the command line options of the program
     Result:
        None
-    '''
+    """
     if options.fasta_files:
         for fasta_filename in options.fasta_files:
             logging.info("Processing FASTA file from %s", fasta_filename)
@@ -202,7 +187,7 @@ def process_files(options):
 
 
 def init_logging(log_filename):
-    '''If the log_filename is defined, then
+    """If the log_filename is defined, then
     initialise the logging facility, and write log statement
     indicating the program has started, and also write out the
     command line from sys.argv
@@ -212,15 +197,17 @@ def init_logging(log_filename):
             string name of the log file to write to
     Result:
         None
-    '''
+    """
     if log_filename is not None:
-        logging.basicConfig(filename=log_filename,
-                            level=logging.DEBUG,
-                            filemode='w',
-                            format='%(asctime)s %(levelname)s - %(message)s',
-                            datefmt="%Y-%m-%dT%H:%M:%S%z")
-        logging.info('program started')
-        logging.info('command line: %s', ' '.join(sys.argv))
+        logging.basicConfig(
+            filename=log_filename,
+            level=logging.DEBUG,
+            filemode="w",
+            format="%(asctime)s %(levelname)s - %(message)s",
+            datefmt="%Y-%m-%dT%H:%M:%S%z",
+        )
+        logging.info("program started")
+        logging.info("command line: %s", " ".join(sys.argv))
 
 
 def main():
@@ -232,5 +219,5 @@ def main():
 
 
 # If this script is run from the command line then call the main function.
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

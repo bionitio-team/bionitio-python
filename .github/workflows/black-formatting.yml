@@ -1,0 +1,17 @@
+name: Black code formatting
+on:
+  push:
+    paths:
+      - '**.py'
+  pull_request:
+    paths:
+      - '**.py'
+
+jobs:
+  LintBlack:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Check code lints with Black
+        uses: jpetrucciani/black-check@master
