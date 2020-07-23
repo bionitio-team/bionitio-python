@@ -20,7 +20,7 @@ setup(
     entry_points={"console_scripts": ["bionitio = bionitio.bionitio:main"]},
     url="https://github.com/BIONITIO_GITHUB_USERNAME/bionitio",
     license="LICENSE",
-    description=("A prototypical bioinformatics command line tool"),
-    long_description=(LONG_DESCRIPTION),
+    description="A prototypical bioinformatics command line tool",
+    long_description=LONG_DESCRIPTION,
     install_requires=["biopython"],
 )
